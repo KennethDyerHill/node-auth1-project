@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const helmet = require("helmet")
-const authRouter = require("./auth/auth-router")
+
 const usersRouter = require("./users/users-router")
 
 const server = express()
@@ -11,7 +11,7 @@ server.use(cors())
 server.use(helmet())
 server.use(express.json())
 
-server.use("/auth", authRouter)
+
 server.use("/users", usersRouter)
 
 server.get("/", (req, res, next) => {
@@ -28,5 +28,5 @@ server.use((err, req, res, next) => {
 })
 
 server.listen(port, () => {
-	console.log(`Running at http://localhost:${port}`)
+	console.log(`Running at ${port}`)
 })
